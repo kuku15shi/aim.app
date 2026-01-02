@@ -1,0 +1,18 @@
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Composer
+vendor/
+
+# Environment
+.env
