@@ -168,9 +168,7 @@ $result = $conn->query($sql);
         <h1 class="page-title">FLASH NEWS</h1>
     </div>
     <div id="theme-toggle" class="theme-toggle-pill">
-        <i class="fas fa-sun toggle-icon sun"></i>
-        <i class="fas fa-moon toggle-icon moon"></i>
-        <div class="toggle-ball"></div>
+        <i class="fas fa-sun" id="theme-icon"></i>
     </div>
 </div>
 
@@ -249,86 +247,7 @@ $result = $conn->query($sql);
 
 </div> <!-- End app-container -->
 
-<!-- Emergency Modal -->
-<div class="modal fade" id="emergencyModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Emergency Contacts</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-0">
-        <div class="list-group list-group-flush">
-            <!-- Police -->
-            <a href="tel:100" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-primary">
-                    <i class="fas fa-user-shield fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Police Control Room</h6>
-                    <small class="text-muted">Tap to Call: 100</small>
-                </div>
-            </a>
-            
-            <!-- Ambulance -->
-            <a href="tel:108" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-danger">
-                    <i class="fas fa-ambulance fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Ambulance Service</h6>
-                    <small class="text-muted">Tap to Call: 108</small>
-                </div>
-            </a>
 
-            <!-- Fire Force -->
-            <a href="tel:101" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-warning">
-                    <i class="fas fa-fire-extinguisher fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Fire Force</h6>
-                    <small class="text-muted">Tap to Call: 101</small>
-                </div>
-            </a>
-
-            <!-- Women Helpline -->
-            <a href="tel:1091" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-danger">
-                    <i class="fas fa-female fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Women Helpline</h6>
-                    <small class="text-muted">Tap to Call: 1091</small>
-                </div>
-            </a>
-
-            <!-- Child Helpline -->
-            <a href="tel:1098" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-success">
-                    <i class="fas fa-child fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Child Helpline</h6>
-                    <small class="text-muted">Tap to Call: 1098</small>
-                </div>
-            </a>
-
-            <!-- Cyber Cell -->
-            <a href="tel:1930" class="list-group-item list-group-item-action d-flex align-items-center p-3">
-                <div class="bg-light rounded-circle p-2 me-3 text-info">
-                    <i class="fas fa-laptop-code fa-lg"></i>
-                </div>
-                <div>
-                    <h6 class="mb-0">Cyber Crime Helpline</h6>
-                    <small class="text-muted">Tap to Call: 1930</small>
-                </div>
-            </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Bottom Navigation -->
 <div class="bottom-nav">
@@ -336,16 +255,11 @@ $result = $conn->query($sql);
         <i class="fas fa-home"></i>
         <span>Home</span>
     </a>
-    <a href="#" class="nav-item">
+    <a href="updates/" class="nav-item">
         <i class="fas fa-bullhorn"></i>
         <span>Updates</span>
     </a>
-    <a href="#" class="nav-item emergency-item" data-bs-toggle="modal" data-bs-target="#emergencyModal">
-        <div class="emergency-circle">
-            <i class="fas fa-bell"></i>
-        </div>
-        <span>Emergency</span>
-    </a>
+
     <a href="news.php" class="nav-item active news-icon-item">
         <i class="fas fa-newspaper"></i>
         <span>News</span>

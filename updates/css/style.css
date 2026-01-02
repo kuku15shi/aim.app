@@ -1,0 +1,249 @@
+body {
+    background-color: var(--primary-bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+}
+
+/* Auth Pages */
+.brand-logo {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.login-card {
+    background-color: var(--card-bg);
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 2rem;
+    margin-bottom: 10px;
+}
+
+.auth-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 9px 8px;
+    color: var(--text-dark);
+}
+
+.auth-input:focus {
+    border-color: #a8a8a8;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #0095f6;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    color: #8e8e8e;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 15px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dbdbdb;
+}
+
+.or-divider::before {
+    margin-right: 15px;
+}
+
+.or-divider::after {
+    margin-left: 15px;
+}
+
+/* Feed Styles */
+/* Modern Feed Enhancements */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-color);
+}
+
+.navbar {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    background: linear-gradient(45deg, #ff3366, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.like-btn,
+.comment-toggle-btn,
+.share-btn {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.like-btn:hover {
+    color: #ff3366;
+    background: rgba(255, 51, 102, 0.1);
+    transform: scale(1.2);
+}
+
+.like-btn.fas.text-danger {
+    color: #ff3366 !important;
+}
+
+.comment-toggle-btn:hover {
+    color: #0095f6;
+    background: rgba(0, 149, 246, 0.1);
+    transform: scale(1.2);
+}
+
+.share-btn:hover {
+    color: #00cba9;
+    background: rgba(0, 203, 169, 0.1);
+    transform: scale(1.2);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #0095f6, #00c4cc);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 149, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 149, 246, 0.4);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-control,
+.form-control:focus {
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-dark);
+    border-radius: 12px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sage-green);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7a9c7e;
+}
+
+/* Video Player Styling */
+.video-container {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    width: 100%;
+    /* Flexible height approach */
+    height: auto;
+    min-height: 300px;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    /* Ensures entire video is visible */
+    border-radius: 0 !important;
+    outline: none;
+    cursor: pointer;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Let clicks pass through to video/JS */
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.video-container.playing .video-overlay {
+    opacity: 0;
+}
+
+/* Theme Toggle Pill in Navbar specific adjustment */
+.theme-toggle-pill {
+    margin-right: 15px;
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
+
+@media (max-width: 768px) {
+    .card {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}

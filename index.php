@@ -43,9 +43,7 @@ $notif_result = $conn->query($notif_sql);
         </div>
         <div class="header-icons align-items-center">
             <div id="theme-toggle" class="theme-toggle-pill me-2">
-                <i class="fas fa-sun toggle-icon sun"></i>
-                <i class="fas fa-moon toggle-icon moon"></i>
-                <div class="toggle-ball"></div>
+                <i class="fas fa-sun" id="theme-icon"></i>
             </div>
             <i class="far fa-bell" data-bs-toggle="modal" data-bs-target="#notificationModal" style="cursor: pointer;"></i>
             <i class="fas fa-bars"></i>
@@ -61,7 +59,7 @@ $notif_result = $conn->query($notif_sql);
     </div>
     <!-- Row 1 Categories -->
         <div class="categories-grid ">
-            <a href="healthcare.php" class="category-item">
+            <a href="healthcare/" class="category-item">
                 <div class="icon-box"><i class="fas fa-hospital"></i></div>
                 <span class="category-label">HEALTHCARE</span>
             </a>
@@ -275,7 +273,7 @@ $notif_result = $conn->query($notif_sql);
         <i class="fas fa-home"></i>
         <span>Home</span>
     </a>
-    <a href="#" class="nav-item">
+    <a href="updates/" class="nav-item">
         <i class="fas fa-bullhorn"></i>
         <span>Updates</span>
     </a>

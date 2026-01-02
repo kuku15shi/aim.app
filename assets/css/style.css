@@ -119,64 +119,104 @@ body {
 }
 
 /* Pill Toggle Styles */
+/* User Requested Toggle Style */
 .theme-toggle-pill {
-  width: 50px;
-  height: 26px;
-  background-color: var(--text-dark);
-  /* Dark pill background */
-  border-radius: 50px;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
   position: relative;
   cursor: pointer;
+  transition: all 0.4s ease;
+  border: none;
+  /* Light Mode Background (Blue) */
+  background: #54a0ff;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* Clip clouds/stars */
+  flex: none;
+  /* Prevent smashing in flex containers */
+}
+
+/* Thumb Base Style */
+.theme-toggle-pill i {
+  position: absolute;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 5px;
-  box-shadow: 0 2px 5px var(--shadow-color);
-  transition: background-color 0.3s ease;
-}
-
-.theme-toggle-pill .toggle-icon {
-  font-size: 12px;
-  color: #fff;
-  /* Icons always white inside the dark pill? Or depends on theme */
-  z-index: 1;
-}
-
-.theme-toggle-pill .toggle-icon.sun {
-  color: #f39c12;
-  /* Golden sun */
-}
-
-.theme-toggle-pill .toggle-icon.moon {
-  color: #f1c40f;
-  /* Moon color */
-}
-
-.theme-toggle-pill .toggle-ball {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 22px;
-  height: 22px;
-  background-color: #fff;
-  border-radius: 50%;
-  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Bouncy Spring */
   z-index: 2;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Move ball to right in Dark Mode */
-[data-theme="dark"] .theme-toggle-pill .toggle-ball {
-  transform: translateX(24px);
+/* LIGHT MODE STATE (Sun Class) 
+   - We style this as a plain white ball
+*/
+.theme-toggle-pill .fa-sun {
+  left: 4px;
+  background: #fff;
+  color: transparent !important;
+  /* Hide the actual sun icon glyph */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Adjust colors for dark mode pill background if needed */
+/* Cloud Decorations (Light Mode) */
+.theme-toggle-pill::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 8px -2px 0 0 rgba(255, 255, 255, 0.4),
+    5px 8px 0 -1px rgba(255, 255, 255, 0.5);
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
+/* DARK MODE STATE (Moon Class)
+   - We style this to show the moon icon
+*/
+.theme-toggle-pill .fa-moon {
+  /* Move to right: 60px - 24px - 4px = 32px */
+  left: 32px;
+  background: transparent;
+  color: #fff !important;
+  /* White Moon */
+  font-size: 20px;
+  transform: rotate(-10deg);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  /* Glow */
+}
+
+/* Dark Mode Background Override */
 [data-theme="dark"] .theme-toggle-pill {
-  background-color: var(--text-dark);
-  /* White-ish in dark mode? Or keep it dark? */
-  background-color: #333;
-  /* Keep it dark grey like the image */
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #1e272e;
+  /* Dark Blue-Grey */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Star Decorations (Dark Mode) - Replaces Clouds */
+[data-theme="dark"] .theme-toggle-pill::before {
+  top: 8px;
+  left: 15px;
+  right: auto;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  box-shadow: 10px 5px 0 0 #fff,
+    5px 12px 0 -1px rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+/* Ensure decorations switch cleanly */
+.theme-toggle-pill .decoration-stars {
+  /* Handled by ::before changes but we can be explicit if needed */
 }
 
 .header-icons {
@@ -274,7 +314,7 @@ body {
 
 @media (min-width: 768px) {
   .categories-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 30px;
     gap: 25px;
   }
