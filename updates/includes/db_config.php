@@ -1,15 +1,10 @@
 <?php
-// Database credentials
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root'); // <--- CHANGE THIS
-define('DB_PASSWORD', '');     // <--- CHANGE THIS
-define('DB_NAME', 'insta_clone_db');
+// Use absolute path to ensure this works from 'updates/' and 'updates/api/' and anywhere else
+$home_root = dirname(dirname(__DIR__)); // Go up: includes -> updates -> home
+require_once $home_root . '/includes/db.php';
 
-// Attempt to connect to MySQL database
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// Check connection
-if ($conn === false) {
-    die("ERROR: Could not connect. " . $conn->connect_error);
+// Ensure $conn is available (db.php should create it)
+if (!isset($conn) || $conn->connect_error) {
+    die("Connection failed: " . (isset($conn) ? $conn->connect_error : 'Database configuration error'));
 }
 ?>

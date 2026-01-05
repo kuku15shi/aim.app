@@ -6,6 +6,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const postId = this.getAttribute('data-post-id');
             const icon = this;
             const countSpan = document.getElementById('like-count-' + postId);
+            let currentCount = parseInt(countSpan.textContent);
+
+            // Determine desired state (Optimistic)
+            const isLiked = icon.classList.contains('fas'); // Currently liked (filled)
+            const wasLiked = isLiked; // Track previous state for rollback
+
+            // Apply Optimistic Update
+            if (isLiked) {
+                // Unlike
+                icon.classList.remove('fas', 'text-danger');
+                icon.classList.add('far');
+                countSpan.textContent = Math.max(0, currentCount - 1);
+            } else {
+                // Like
+                icon.classList.remove('far');
+                icon.classList.add('fas', 'text-danger');
+                countSpan.textContent = currentCount + 1;
+            }
+
+            // Animate
+            icon.style.transform = "scale(1.3)";
+            setTimeout(() => icon.style.transform = "scale(1)", 200);
 
             const formData = new FormData();
             formData.append('post_id', postId);
@@ -17,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        // Server confirmed. Ensure state aligns with server (optional, but safer to respect action)
                         if (data.action === 'liked') {
                             icon.classList.remove('far');
                             icon.classList.add('fas', 'text-danger');
@@ -27,9 +50,31 @@ document.addEventListener('DOMContentLoaded', function () {
                         countSpan.textContent = data.new_count;
                     } else {
                         console.error('Error:', data.message);
+                        // Revert on error
+                        if (wasLiked) {
+                            icon.classList.remove('far');
+                            icon.classList.add('fas', 'text-danger');
+                            countSpan.textContent = currentCount;
+                        } else {
+                            icon.classList.remove('fas', 'text-danger');
+                            icon.classList.add('far');
+                            countSpan.textContent = currentCount;
+                        }
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Revert on network error
+                    if (wasLiked) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas', 'text-danger');
+                        countSpan.textContent = currentCount;
+                    } else {
+                        icon.classList.remove('fas', 'text-danger');
+                        icon.classList.add('far');
+                        countSpan.textContent = currentCount;
+                    }
+                });
         });
     });
 
@@ -131,14 +176,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        // Ensure the comment section is visible
+                        const commentSection = document.getElementById('comments-' + postId);
+                        if (commentSection.style.display === 'none') {
+                            commentSection.style.display = 'block';
+                        }
+
                         const p = document.createElement('div');
                         p.className = 'mb-1 small d-flex justify-content-between align-items-center comment-item';
-                        // New comment is ours by definition
                         p.innerHTML = `
                              <span><strong>${data.username}</strong> ${data.comment}</span>
                              <i class="fas fa-trash text-muted delete-comment-btn" style="cursor:pointer; font-size: 0.8rem;" onclick="location.reload()"></i> 
                          `;
-                        // Better: Just append text.
+                        // Note: The onclick="location.reload()" is a temporary fix for delete handlers. 
+                        // Ideally we should attach handler dynamically or use event delegation.
+                        // But for now, let's keep it consistent or use the better innerHTML structure
+
+                        p.innerHTML = `
+                            <span><strong>${data.username}</strong> ${data.comment}</span>
+                             <i class="fas fa-trash text-muted delete-comment-btn" style="cursor:pointer; font-size: 0.8rem;" data-comment-id="new"></i>
+                         `;
+                        // Wait, the API returns data.username and data.comment but maybe not ID?
+                        // The PHP add_comment.php does NOT return the new comment ID.
+                        // So we can't delete it immediately without reload.
+                        // Let's stick to the user's existing logic, or just plain text.
+
                         p.innerHTML = `<span><strong>${data.username}</strong> ${data.comment}</span>`;
 
                         list.appendChild(p);

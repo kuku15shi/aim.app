@@ -1,0 +1,162 @@
+/* Transportation Page Styles */
+
+:root {
+    /* Light Theme Defaults */
+    --page-bg: #e6ffec;
+    --element-bg: #d1f5d3;
+    /* Header pill, icon boxes, buttons */
+    --element-hover-bg: #bbf0bf;
+    --text-main: #2d3436;
+    --icon-color: #1a1a1a;
+    --back-btn-color: #000;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Overrides */
+    --page-bg: #0f172a;
+    /* Deep Slate 900 */
+    --element-bg: #1e293b;
+    /* Slate 800 */
+    --element-hover-bg: #334155;
+    /* Slate 700 */
+    --text-main: #f8fafc;
+    /* Slate 50 */
+    --icon-color: #cbd5e1;
+    /* Slate 300 */
+    --back-btn-color: #f8fafc;
+}
+
+body.transportation-body {
+    background-color: var(--page-bg);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-title-transport {
+    text-align: center;
+    background-color: var(--element-bg);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-main);
+    display: inline-block;
+    width: 60%;
+    margin: 0 auto;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 10px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    color: var(--back-btn-color);
+    transition: color 0.3s ease;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 10px;
+    padding: 20px 30px;
+    justify-items: center;
+}
+
+.transport-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-main);
+    width: 100%;
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background-color: var(--element-bg);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    transition: transform 0.2s, background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.icon-box i {
+    font-size: 32px;
+    color: var(--icon-color);
+    transition: color 0.3s ease;
+}
+
+.transport-item:hover .icon-box {
+    transform: scale(1.05);
+    background-color: var(--element-hover-bg);
+}
+
+.item-label {
+    font-size: 11px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* Specific styling for the 'Other' button */
+.other-btn-container {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.other-btn {
+    background-color: var(--element-bg);
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    color: var(--text-main);
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ad Banner */
+.ad-banner {
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ad-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Custom Icons handling */
+.custom-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Bottom Nav Override */
+.bottom-nav {
+    background: var(--glass-bg);
+    /* Use global variable if available, else fallback */
+}

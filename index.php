@@ -63,14 +63,14 @@ $notif_result = $conn->query($notif_sql);
                 <div class="icon-box"><i class="fas fa-hospital"></i></div>
                 <span class="category-label">HEALTHCARE</span>
             </a>
-            <div class="category-item">
+            <a href="transportation/" class="category-item">
                 <div class="icon-box"><i class="fas fa-taxi"></i></div>
                 <span class="category-label">TRANSPORTATION</span>
-            </div>
-            <div class="category-item">
+            </a>
+            <a href="governmentsvc/" class="category-item">
                 <div class="icon-box"><i class="fas fa-landmark"></i></div>
                 <span class="category-label">GOVERNMENT SVC</span>
-            </div>
+            </a>
         </div>
 
         <!-- Carousel -->
