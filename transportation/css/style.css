@@ -68,57 +68,6 @@ body.transportation-body {
     /* Space for bottom nav */
 }
 
-/* PC/Desktop Centering */
-@media (min-width: 992px) {
-    body.transportation-body {
-        background: var(--bg-gradient-light);
-        /* Ensure PC uses gradient background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 40px 0;
-    }
-
-    [data-theme="dark"] body.transportation-body {
-        background: #0f172a;
-        /* Solid dark for contrast on PC */
-    }
-
-    .app-container {
-        width: 100%;
-        max-width: 1000px;
-        /* Wider container for PC */
-        min-height: 85vh;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(20px);
-        border-radius: 30px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    [data-theme="dark"] .app-container {
-        background: rgba(30, 41, 59, 0.6);
-        border-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .transport-grid {
-        grid-template-columns: repeat(4, 1fr);
-        /* 4 columns on PC */
-        gap: 40px;
-        padding: 40px;
-    }
-
-    .icon-box {
-        width: 100px;
-        height: 100px;
-        font-size: 40px;
-    }
-
-    .ad-banner {
-        margin: 40px;
-    }
-}
-
 /* --- Header Styling --- */
 .header-area {
     padding: 25px 20px 15px;
