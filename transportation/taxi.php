@@ -302,6 +302,7 @@ function fetchDrivers() {
                         </div>
                         <div>
                             <h5 class="mb-1 fw-bold">${driver.name}</h5>
+                            ${driver.location_name ? `<div class="small text-muted mb-1"><i class="fas fa-map-pin text-warning"></i> ${driver.location_name}</div>` : ''}
                             <div class="small text-muted"><i class="far fa-clock"></i> ${driver.timings}</div>
                             <div class="small text-success"><i class="fas fa-check-circle"></i> Available</div>
                         </div>

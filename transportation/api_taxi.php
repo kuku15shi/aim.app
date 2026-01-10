@@ -31,6 +31,7 @@ while($row = $result->fetch_assoc()) {
         'name' => $row['name'],
         'phone' => $row['phone'],
         'type' => $row['type'],
+        'location_name' => $row['location_name'] ?? '', 
         'distance' => round($row['distance'], 2) . ' km',
         'timings' => date('h:i A', strtotime($row['timing_start'])) . ' - ' . date('h:i A', strtotime($row['timing_end']))
     ];
