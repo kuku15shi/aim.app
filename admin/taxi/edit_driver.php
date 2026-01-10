@@ -21,12 +21,13 @@ if (isset($_POST['update_driver'])) {
     $type = $conn->real_escape_string($_POST['type']);
     $name = $conn->real_escape_string($_POST['name']);
     $phone = $conn->real_escape_string($_POST['phone']);
+    $location_name = $conn->real_escape_string($_POST['location_name']);
     $lat = $conn->real_escape_string($_POST['lat']);
     $lng = $conn->real_escape_string($_POST['lng']);
     $start = $conn->real_escape_string($_POST['start']);
     $end = $conn->real_escape_string($_POST['end']);
 
-    $sql = "UPDATE taxi_drivers SET type='$type', name='$name', phone='$phone', lat='$lat', lng='$lng', timing_start='$start', timing_end='$end' WHERE id=$id";
+    $sql = "UPDATE taxi_drivers SET type='$type', name='$name', phone='$phone', location_name='$location_name', lat='$lat', lng='$lng', timing_start='$start', timing_end='$end' WHERE id=$id";
     
     if($conn->query($sql)) {
         header("Location: index.php");
@@ -68,6 +69,10 @@ if (isset($_POST['update_driver'])) {
                 <div class="mb-3">
                     <label>Phone Number</label>
                     <input type="tel" name="phone" class="form-control" value="<?php echo htmlspecialchars($driver['phone']); ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label>Location Name</label>
+                    <input type="text" name="location_name" class="form-control" value="<?php echo htmlspecialchars($driver['location_name']); ?>">
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">

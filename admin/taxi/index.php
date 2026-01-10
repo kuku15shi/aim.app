@@ -11,12 +11,13 @@ if (isset($_POST['add_driver'])) {
     $type = $conn->real_escape_string($_POST['type']);
     $name = $conn->real_escape_string($_POST['name']);
     $phone = $conn->real_escape_string($_POST['phone']);
+    $location_name = $conn->real_escape_string($_POST['location_name']);
     $lat = $conn->real_escape_string($_POST['lat']);
     $lng = $conn->real_escape_string($_POST['lng']);
     $start = $conn->real_escape_string($_POST['start']);
     $end = $conn->real_escape_string($_POST['end']);
 
-    $conn->query("INSERT INTO taxi_drivers (type, name, phone, lat, lng, timing_start, timing_end) VALUES ('$type', '$name', '$phone', '$lat', '$lng', '$start', '$end')");
+    $conn->query("INSERT INTO taxi_drivers (type, name, phone, location_name, lat, lng, timing_start, timing_end) VALUES ('$type', '$name', '$phone', '$location_name', '$lat', '$lng', '$start', '$end')");
 }
 
 // Delete Driver
@@ -84,6 +85,10 @@ $drivers = $conn->query("SELECT * FROM taxi_drivers ORDER BY id DESC");
                                 <label>Phone Number</label>
                                 <input type="tel" name="phone" class="form-control" required placeholder="+91 99999 99999">
                             </div>
+                            <div class="mb-3">
+                                <label>Location Name (Area/Stand)</label>
+                                <input type="text" name="location_name" class="form-control" placeholder="e.g. Railway Station Stand">
+                            </div>
                             <div class="row">
                                 <div class="col-6 mb-3">
                                     <label>Start Time</label>
@@ -122,6 +127,7 @@ $drivers = $conn->query("SELECT * FROM taxi_drivers ORDER BY id DESC");
                                         <th>Type</th>
                                         <th>Name</th>
                                         <th>Phone</th>
+                                        <th>Location</th>
                                         <th>Timings</th>
                                         <th>Action</th>
                                     </tr>
@@ -138,6 +144,7 @@ $drivers = $conn->query("SELECT * FROM taxi_drivers ORDER BY id DESC");
                                         </td>
                                         <td><strong><?php echo htmlspecialchars($row['name']); ?></strong></td>
                                         <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                                        <td><small class="text-muted"><?php echo htmlspecialchars($row['location_name']); ?></small></td>
                                         <td>
                                             <small><?php echo date('h:i A', strtotime($row['timing_start'])); ?> - <?php echo date('h:i A', strtotime($row['timing_end'])); ?></small>
                                         </td>

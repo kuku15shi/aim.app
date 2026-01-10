@@ -26,8 +26,16 @@ $check = $conn->query("SELECT * FROM taxi_drivers LIMIT 1");
 if ($check->num_rows == 0) {
     $conn->query("INSERT INTO taxi_drivers (type, name, phone, lat, lng, timing_start, timing_end) VALUES 
     ('auto', 'Ramesh Kumar', '9876543210', 12.9716, 77.5946, '08:00:00', '20:00:00'),
+    ('auto', 'Ramesh Kumar', '9876543210', 12.9716, 77.5946, '08:00:00', '20:00:00'),
     ('car', 'Suresh Travels', '9988776655', 12.9780, 77.5900, '06:00:00', '23:00:00')");
     echo "Dummy data inserted.<br>";
+}
+
+// Check for location_name column and add if missing
+$col_check = $conn->query("SHOW COLUMNS FROM taxi_drivers LIKE 'location_name'");
+if ($col_check->num_rows == 0) {
+    $conn->query("ALTER TABLE taxi_drivers ADD COLUMN location_name VARCHAR(255) DEFAULT NULL AFTER phone");
+    echo "Added 'location_name' column.<br>";
 }
 
 echo "Database initialization complete.";
