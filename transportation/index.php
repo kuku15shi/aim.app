@@ -23,7 +23,9 @@
         <div class="header-area">
             <a href="../index.php" class="back-btn"><i class="fas fa-arrow-left"></i></a>
             <div class="header-title-transport">TRANSPORTATION</div>
-            <div style="width: 20px;"></div> <!-- Spacer -->
+            <div id="theme-toggle" class="back-btn" style="cursor: pointer;">
+                <i class="fas fa-sun" id="theme-icon"></i>
+            </div>
         </div>
 
         <!-- Transportation Grid -->

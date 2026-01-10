@@ -147,10 +147,19 @@
     <!-- Main Content -->
     <div class="content-wrapper p-4">
         
-        <div class="location-status">
-            <div class="d-flex align-items-center">
-                <div class="taxi-pulse-dot" id="gps-dot"></div>
-                <span id="location-text" style="font-size: 0.9rem;">Locating you...</span>
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body p-2">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-0"><i class="fas fa-map-marker-alt text-warning"></i></span>
+                    <input type="text" id="manual-location" class="form-control border-0 shadow-none" placeholder="Search your location (e.g. MG Road)">
+                    <button class="btn btn-warning rounded-pill px-3" onclick="manualSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                 <div class="d-flex align-items-center mt-2 ps-2">
+                    <div class="taxi-pulse-dot" id="gps-dot"></div>
+                    <small id="location-text" class="text-muted">Locating you...</small>
+                </div>
             </div>
         </div>
 
@@ -320,6 +329,31 @@ function fetchDrivers() {
         console.error(err);
         list.innerHTML = '<p class="text-center text-danger">Failed to load drivers.</p>';
     });
+
+function manualSearch() {
+    const query = document.getElementById('manual-location').value;
+    if (!query) return;
+
+    updateLocationStatus("Searching for '" + query + "'...", true);
+
+    // Using Nominatim OpenStreetMap API (Free)
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                gpsLat = data[0].lat;
+                gpsLng = data[0].lon;
+                updateLocationStatus(`📍 ${data[0].display_name.split(',')[0]}`, false);
+                fetchDrivers();
+            } else {
+                updateLocationStatus("Location not found. Try again.", false);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            updateLocationStatus("Search failed. Check internet.", false);
+        });
+}
 }
 </script>
 
