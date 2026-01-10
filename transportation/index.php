@@ -29,7 +29,7 @@
         <!-- Transportation Grid -->
         <div class="transport-grid">
             <!-- Cars -->
-            <a href="#" class="transport-item">
+            <a href="taxi.php" class="transport-item">
                 <div class="icon-box">
                     <i class="fas fa-car-side"></i>
                 </div>
@@ -37,7 +37,7 @@
             </a>
 
             <!-- Autorickshaw -->
-            <a href="#" class="transport-item">
+            <a href="taxi.php" class="transport-item">
                 <div class="icon-box">
                     <!-- Icon for Auto/Rickshaw - using taxi/shuttle as fallback or custom SVG if needed later -->
                     <i class="fas fa-taxi"></i>
@@ -46,7 +46,7 @@
             </a>
 
             <!-- Bus -->
-            <a href="#" class="transport-item">
+            <a href="bus.php" class="transport-item">
                 <div class="icon-box">
                     <i class="fas fa-bus"></i>
                 </div>

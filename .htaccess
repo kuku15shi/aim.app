@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# 1. Hide .php extension (Redirect external requests from file.php to file)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 2. Internally map file to file.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# 3. Handle trailing slash issues (optional but recommended)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ $1 [L,R=301]
+
+# 4. Error Pages (Optional)
+ErrorDocument 404 /home/error.php

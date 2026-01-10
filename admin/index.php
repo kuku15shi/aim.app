@@ -92,6 +92,26 @@ include 'auth_check.php';
                 </div>
             </div>
         </div>
+        
+        <div class="col-md-4">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Bus Transport</h5>
+                    <p class="card-text">Manage Stops, Routes & Timings.</p>
+                    <a href="bus/index.php" class="btn btn-primary" style="background-color: #4e54c8; border: none;">Manage Buses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Taxi & Auto</h5>
+                    <p class="card-text">Manage Drivers, Cars & Autos.</p>
+                    <a href="taxi/index.php" class="btn btn-warning text-dark">Manage Drivers</a>
+                </div>
+            </div>
+        </div>
 
         <?php if($_SESSION['admin_role'] == 'super_admin'): ?>
         <div class="col-md-4">

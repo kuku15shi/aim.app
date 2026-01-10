@@ -27,18 +27,23 @@ $notif_result = $conn->query($notif_sql);
 </head>
 <body>
 
+<!-- Full Page Skeleton Loader -->
+<?php
+// Only show loader on first visit/open time
+if (!isset($_SESSION['has_loaded'])) {
+    include 'loading.php';
+    $_SESSION['has_loaded'] = true;
+}
+?>
+
 <div class="app-container">
 <!-- Sticky Top Area -->
 <div class="sticky-top-area sticky-top">
     <!-- Top Header (Old System Restored) -->
     <div class="top-header">
         <div class="logo-section">
-            <div class="logo-icon">
-                <i class="fas fa-leaf"></i>
-            </div>
-            <div class="logo-text">
-                <span class="main-text">MALAPPURAM</span><br>
-                <span class="sub-text">CLICK ALL</span>
+            <div class="me-3">
+                <img src="assets/logo/aim-logo.png" alt="AIM Logo" class="main-logo">
             </div>
         </div>
         <div class="header-icons align-items-center">
@@ -344,6 +349,28 @@ $notif_result = $conn->query($notif_sql);
         });
         checkEmpty();
     });
+
+    // Global Skeleton Loader Safety Removal
+    // Ensures loader is removed even if 3D script fails
+    window.addEventListener('load', function() {
+        setTimeout(removeSkeletonLoader, 2000); // 2s min display time
+    });
+
+    // Fallback: Force remove after 5 seconds max if something hangs
+    setTimeout(removeSkeletonLoader, 5000);
+
+    function removeSkeletonLoader() {
+        var loader = document.getElementById('skeleton-loader');
+        if (loader && !loader.classList.contains('removing')) {
+            loader.classList.add('removing'); // Prevent double triggers
+            loader.style.transition = 'opacity 0.5s ease';
+            loader.style.opacity = '0';
+            setTimeout(function() {
+                if(loader.parentNode) loader.parentNode.removeChild(loader);
+                document.querySelector('.app-container').classList.remove('loading');
+            }, 500);
+        }
+    }
 </script>
 </body>
 </html>
