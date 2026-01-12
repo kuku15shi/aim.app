@@ -17,16 +17,33 @@
 </head>
 <body class="transportation-body">
 
-    <div class="app-container" style="background: transparent; box-shadow: none;">
+    <div class="app-container">
         
-        <!-- Header -->
-        <div class="header-area">
-            <a href="../index.php" class="back-btn"><i class="fas fa-arrow-left"></i></a>
-            <div class="header-title-transport">TRANSPORTATION</div>
-            <div id="theme-toggle" class="back-btn" style="cursor: pointer;">
-                <i class="fas fa-sun" id="theme-icon"></i>
+        <!-- Sticky Header -->
+        <div class="sticky-top-area sticky-top" style="background: var(--card-bg); z-index: 1000;">
+            <div class="top-header">
+                <div class="logo-section">
+                    <a href="../index.php" class="text-decoration-none text-dark me-3">
+                        <i class="fas fa-arrow-left fa-lg"></i>
+                    </a>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+                            <i class="fas fa-taxi fa-sm"></i>
+                        </div>
+                        <div>
+                            <div class="main-text">TRANSPORTATION</div>
+                            <div class="sub-text">SERVICES</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-icons align-items-center">
+                    <div id="theme-toggle" class="theme-toggle-pill me-2">
+                        <i class="fas fa-sun" id="theme-icon"></i>
+                    </div>
+                </div>
             </div>
         </div>
+            
 
         <!-- Transportation Grid -->
         <div class="transport-grid">
@@ -56,11 +73,12 @@
             </a>
 
             <!-- Kasrtc -->
-            <a href="#" class="transport-item">
+            <!-- Kasrtc -->
+            <a href="ksrtc.php" class="transport-item">
                 <div class="icon-box">
                     <i class="fas fa-bus-simple"></i>
                 </div>
-                <span class="item-label">Kasrtc</span>
+                <span class="item-label">KSRTC</span>
             </a>
 
             <!-- Train -->

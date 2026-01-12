@@ -41,6 +41,13 @@ $routes_sql = "
     JOIN bus_route_stops s2 ON r.id = s2.route_id AND s2.stop_id = $dest_id
     WHERE s1.stop_order < s2.stop_order
 ";
+
+// Optional: Filter by type if provided
+if(isset($_GET['type'])) {
+    $type = $conn->real_escape_string($_GET['type']);
+    $routes_sql = str_replace("WHERE", "WHERE r.type = '$type' AND", $routes_sql);
+}
+
 $routes_res = $conn->query($routes_sql);
 
 $results = [];

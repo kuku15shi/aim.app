@@ -38,9 +38,16 @@ $queries = [
 
 foreach ($queries as $sql) {
     if ($conn->query($sql) === TRUE) {
-        echo "Table created successfully\n";
+        // Table created or already exists
     } else {
         echo "Error creating table: " . $conn->error . "\n";
     }
+}
+
+// Add 'type' column to bus_routes if it doesn't exist
+$col_check = $conn->query("SHOW COLUMNS FROM bus_routes LIKE 'type'");
+if ($col_check->num_rows == 0) {
+    $conn->query("ALTER TABLE bus_routes ADD COLUMN type ENUM('local', 'ksrtc') DEFAULT 'local' AFTER route_name");
+    echo "Added 'type' column to bus_routes.\n";
 }
 ?>

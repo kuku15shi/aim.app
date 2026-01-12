@@ -68,6 +68,21 @@ body.transportation-body {
     /* Space for bottom nav */
 }
 
+/* Desktop Expansion */
+@media (min-width: 992px) {
+    .app-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        border-radius: 24px;
+        background: var(--card-bg);
+        box-shadow: 0 20px 60px var(--shadow-color);
+        min-height: 85vh;
+        overflow: hidden;
+    }
+}
+
+
+
 /* --- Header Styling --- */
 .header-area {
     padding: 25px 20px 15px;
@@ -159,6 +174,15 @@ body.transportation-body {
     padding: 20px;
 }
 
+@media (min-width: 992px) {
+    .transport-grid {
+        grid-template-columns: repeat(5, 1fr);
+        /* 5 columns on desktop */
+        gap: 40px;
+        padding: 50px;
+    }
+}
+
 .transport-item {
     display: flex;
     flex-direction: column;
@@ -192,6 +216,16 @@ body.transportation-body {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .icon-box {
+        width: 100px;
+        height: 100px;
+        border-radius: 24px;
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
 }
 
 /* Shine Effect on Hover */
